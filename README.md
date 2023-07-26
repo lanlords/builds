@@ -1,6 +1,11 @@
+[![Update Status](https://github.com/lanlords/builds/actions/workflows/update.yml/badge.svg)](https://github.com/lanlords/games/actions)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 # Builds
 
-Monitor game server updates
+Monitor game server updates. Every 15 minutes a workflow (pipeline) runs that
+checks the [SteamCMD API](https://www.steamcmd.net) for an updated build id.
+The latest build id is stored in separate json files in the `/state` directory.
 
 ## Containers
 
