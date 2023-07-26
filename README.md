@@ -5,7 +5,13 @@
 
 Monitor game server updates. Every 15 minutes a workflow (pipeline) runs that
 checks the [SteamCMD API](https://www.steamcmd.net) for an updated build id.
+When a change is detected the corresponding workflow in the
+[lanlords/games](https://github.com/lanlords/games) repository is triggered.
+This workflow will then build new container images on Docker Hub.
+
 The latest build id is stored in separate json files in the `/state` directory.
+If the retrieved build id does not match with the stored one a new json file is
+generated and committed to this repository.
 
 ## Containers
 
