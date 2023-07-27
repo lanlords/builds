@@ -37,7 +37,7 @@ then
    --arg name "$APP_NAME" \
    --arg build "$BUILD_ID_NEW" \
    --arg updated "$CUR_TIME" \
-   '{"id_": $id, "name": $name, "build": $build ,"updated": $updated}' > $STATE_FILE
+   '{"id": $id, "name": $name, "build": $build ,"updated": $updated}' > $STATE_FILE
    echo "> Generating updated state file"
 
    # trigger build pipeline
