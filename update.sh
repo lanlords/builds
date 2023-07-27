@@ -42,7 +42,7 @@ then
 
    # trigger build pipeline
    gh workflow run games.yml -f game=$APP_NAME --repo lanlords/games
-   echo "> Triggered GH Actions workflow for updated game"
+   echo "> Triggered GitHub Actions workflow to rebuild game image"
 else
    echo "> No difference in stored and retrieved build id. No further actions"
 fi
