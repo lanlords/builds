@@ -18,7 +18,9 @@ jobs:
       - name: Check for updates
         run: |
           ./update.sh 220070 cmw
+          echo ""
           ./update.sh 740 csgo
+          echo ""
           ./update.sh 232250 tf2
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
