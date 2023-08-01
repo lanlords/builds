@@ -12,6 +12,12 @@ then
 	echo "  $0 740 csgo"
 	exit 1
 fi
+if [ "$GH_TOKEN" == "" ] || [ "$DISCORD_WEBHOOK" == "" ]
+then
+   echo "> Make sure you set GH_TOKEN and DISCORD_WEBHOOK environment variables."
+   echo "> Use the Actions secrets when using this script in a GitHub workflow."
+   exit 1
+fi
 
 echo "> Started processing information for app: $APP_NAME"
 
@@ -43,6 +49,11 @@ then
    # trigger build pipeline
    gh workflow run games.yml -f game=$APP_NAME --repo lanlords/games
    echo "> Triggered GitHub Actions workflow to rebuild game image"
+
+   # send update to Discord
+   DISCORD_CONTENT="The **$APP_NAME** build id has been updated from \`$BUILD_ID_OLD\` to \`$BUILD_ID_NEW\`. Triggered new [Docker Build](https://hub.docker.com/repository/registry-1.docker.io/lanlords/$APP_NAME/builds)."
+   curl -s -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"GitHub Actions\", \"content\": \"$DISCORD_CONTENT\", \"avatar_url\": \"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\"}" $DISCORD_WEBHOOK
+
 else
    echo "> No difference in stored and retrieved build id. No further actions"
 fi

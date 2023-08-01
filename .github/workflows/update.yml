@@ -20,6 +20,7 @@ jobs:
           ./update.sh 232250 tf2
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Commit any changes
         uses: actions-x/commit@v6
         with:
