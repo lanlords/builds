@@ -1,8 +1,11 @@
 name: Updates Check
 on:
-  schedule:
-    # every 15 minutes
-    - cron: '*/15 * * * *'
+  push:
+    branches:
+      - main
+  #schedule:
+  #  # every 15 minutes
+  #  - cron: '*/15 * * * *'
 
 jobs:
   check-for-updates:
@@ -21,6 +24,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: "main"
       - name: Run update script
         run: ./update.sh ${{ matrix.game.id }} ${{ matrix.game.name }}
         env:
