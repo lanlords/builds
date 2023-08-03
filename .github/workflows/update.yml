@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Run update script
-        run: ./update.sh ${{ matrix.game.id }} ${{ matrix.name }}
+        run: ./update.sh ${{ matrix.game.id }} ${{ matrix.game.name }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
