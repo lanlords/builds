@@ -17,11 +17,11 @@ generated and committed to this repository.
 
 The list of containers below are currently periodically checked for changes:
 
-| Game                | Build ID    |
-|:--------------------|:------------|
-| [Chivalry: Medieval Warfare](https://hub.docker.com/r/lanlords/cmw) | ![Build ID](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.steamcmd.net%2Fv1%2Finfo%2F220070&query=%24.data.220070.depots.branches.public.buildid&label=build%20id)
-| [Counter-Strike: Global Offensive](https://hub.docker.com/r/lanlords/csgo) | ![Build ID](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.steamcmd.net%2Fv1%2Finfo%2F740&query=%24.data.740.depots.branches.public.buildid&label=build%20id)
-| [Team Fortress 2](https://hub.docker.com/r/lanlords/tf2) | ![Build ID](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.steamcmd.net%2Fv1%2Finfo%2F232250&query=%24.data.232250.depots.branches.public.buildid&label=build%20id)
+| Game                | Build ID       | Last Updated    |
+|:--------------------|:---------------|:----------------|
+| [Chivalry: Medieval Warfare](https://hub.docker.com/r/lanlords/cmw) | ![Build ID](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.steamcmd.net%2Fv1%2Finfo%2F220070&query=%24.data.220070.depots.branches.public.buildid&label=build%20id) | ![Last Updated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/lanlords/builds/main/state/cmw.json&query=%24.updated&label=updated)
+| [Counter-Strike: Global Offensive](https://hub.docker.com/r/lanlords/csgo) | ![Build ID](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.steamcmd.net%2Fv1%2Finfo%2F740&query=%24.data.740.depots.branches.public.buildid&label=build%20id) | ![Last Updated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/lanlords/builds/main/state/csgo.json&query=%24.updated&label=updated)
+| [Team Fortress 2](https://hub.docker.com/r/lanlords/tf2) | ![Build ID](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.steamcmd.net%2Fv1%2Finfo%2F232250&query=%24.data.232250.depots.branches.public.buildid&label=build%20id) | ![Last Updated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/lanlords/builds/main/state/tf2.json&query=%24.updated&label=updated)
 
 To add a game, first make sure there is corresponding configuration for it in
 the [lanlords/games](https://github.com/lanlords/games) repository and Docker
