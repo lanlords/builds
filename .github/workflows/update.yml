@@ -2,7 +2,8 @@ name: Updates Check
 on:
   schedule:
     # every 15 minutes
-    - cron: '*/15 * * * *'
+    #- cron: '*/15 * * * *'
+    - cron: '* * * * *'
 
 jobs:
   check-for-updates:
@@ -21,7 +22,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Check for updates
-        run: ./update.sh ${{ matrix.id }} ${{ matrix.name }}
+        run: |
+          echo "${{ matrix.id }}"
+          echo "${{ matrix.name }}"
+        #run: ./update.sh ${{ matrix.id }} ${{ matrix.name }}
         #run: |
         #  ./update.sh 220070 cmw
         #  echo ""
