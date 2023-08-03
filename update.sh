@@ -14,16 +14,32 @@ then
 fi
 if [ "$GH_TOKEN" == "" ] || [ "$DISCORD_WEBHOOK" == "" ]
 then
-   echo "> Make sure you set GH_TOKEN and DISCORD_WEBHOOK environment variables."
-   echo "> Use the Actions secrets when using this script in a GitHub workflow."
+   echo "> Make sure you set GH_TOKEN and DISCORD_WEBHOOK environment variables"
+   echo "> Use the Actions secrets when using this script in a GitHub workflow"
    exit 1
 fi
 
-echo "> Started processing information for app: $APP_NAME"
+echo "> Started processing information for app: \"$APP_NAME\""
+echo "> Connecting to SteamCMD API to retrieve latest build id"
 
 # retrieve steamcmd app info
-BUILD_ID_NEW=$(curl -s "https://api.steamcmd.net/v1/info/$APP_ID" | jq -r ".data.\"$APP_ID\".depots.branches.public.buildid")
-echo "> Retrieved latest build id: $BUILD_ID_NEW"
+CURL_URL="https://api.steamcmd.net/v1/info/$APP_ID"
+CURL_TMP=$(mktemp)
+CURL_OUT=$(curl --silent --output $CURL_TMP --write-out "%{http_code}" "$CURL_URL")
+
+if [[ ${CURL_OUT} -lt 200 || ${CURL_OUT} -gt 299 ]]
+then
+   echo "> SteamCMD API returned the following error http code: \"$CURL_OUT\". Output:"
+   echo "  $(cat $CURL_TMP)"
+   echo "> Exiting script!"
+   rm $CURL_TMP
+   exit 1
+else
+   BUILD_ID_NEW=$(cat $CURL_TMP | jq -r ".data.\"$APP_ID\".depots.branches.public.buildid")
+   rm $CURL_TMP
+fi
+
+echo "> Retrieved latest build id: \"$BUILD_ID_NEW\""
 
 # read current state file
 STATE_FILE="state/$APP_NAME.json"

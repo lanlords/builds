@@ -7,17 +7,27 @@ on:
 jobs:
   check-for-updates:
     runs-on: ubuntu-22.04
-
+    strategy:
+      max-parallel: 1
+      matrix:
+        game:
+          - id: "220070"
+            name: "cmw"
+          - id: "740"
+            name: "csgo"
+          - id: "232250"
+            name: "tf2"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Check for updates
-        run: |
-          ./update.sh 220070 cmw
-          echo ""
-          ./update.sh 740 csgo
-          echo ""
-          ./update.sh 232250 tf2
+        run: ./update.sh ${{ matrix.id }} ${{ matrix.name }}
+        #run: |
+        #  ./update.sh 220070 cmw
+        #  echo ""
+        #  ./update.sh 740 csgo
+        #  echo ""
+        #  ./update.sh 232250 tf2
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
