@@ -14,8 +14,8 @@ jobs:
         game:
           - id: "220070"
             name: "cmw"
-          - id: "740"
-            name: "csgo"
+          - id: "730"
+            name: "cs2"
           - id: "232250"
             name: "tf2"
     steps:

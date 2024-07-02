@@ -9,7 +9,7 @@ CUR_TIME=$(date "+%Y-%m-%d %H:%M:%S")
 if [ "$APP_ID" == "" ] || [ "$APP_NAME" == "" ]
 then
 	echo "> Make sure you set the app id and name. Example:"
-	echo "  $0 740 csgo"
+	echo "  $0 730 cs2"
 	exit 1
 fi
 if [ "$GH_TOKEN" == "" ] || [ "$DISCORD_WEBHOOK" == "" ]
